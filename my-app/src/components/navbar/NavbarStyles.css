@@ -34,7 +34,7 @@ nav {
     width: 550px;
     display: flex;
     justify-content: right;
-    align-items: baseline;
+    align-items: center;
     font-size: 12px;
     font-style: normal;
     font-weight: 900;

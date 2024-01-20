@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import uuid from 'react-uuid';
-import './СomparisonStyles.css';
+import './ComparisonStyles.css';
 import image_yes from '../../images/yes.png';
 import image_no from '../../images/no.png';
 import image_tick from '../../images/tick.png';
@@ -8,7 +8,7 @@ import image_arrows from '../../images/arrows.png';
 import { observer } from 'mobx-react-lite';
 import PhonesStore from '../../store/phonesStore'; 
 
-const Сomparison = observer(() => {
+const Comparison = observer(() => {
 
 	const {phones} = PhonesStore;
 
@@ -80,4 +80,4 @@ const Сomparison = observer(() => {
 	);
 })
 
-export default Сomparison;
+export default Comparison;

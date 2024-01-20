@@ -14,7 +14,7 @@ const Navbar = () => {
                 </ul>
                 <ul className="nav_account">
                     <li>
-                        <Link to='/translator'>Сравнение</Link>
+                        <Link to='/comparison'>Сравнение</Link>
                     </li>
                     <li>
                         <Link to='/account'>Личный кабинет </Link>

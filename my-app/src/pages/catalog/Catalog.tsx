@@ -1,11 +1,10 @@
 import React from 'react';
 
-function Catalog() {
+const Catalog = () => {
 
 	return (
 		<div className="wrapper">
-
-CatalogCatalogCatalog
+			CatalogCatalogCatalog
 		</div>
 	);
 }

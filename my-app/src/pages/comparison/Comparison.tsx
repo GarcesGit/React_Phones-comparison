@@ -1,50 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import uuid from 'react-uuid';
+import React from 'react';
 import './ComparisonStyles.css';
-import image_yes from '../../images/yes.png';
-import image_no from '../../images/no.png';
-import image_tick from '../../images/tick.png';
 import image_arrows from '../../images/arrows.png';
 import { observer } from 'mobx-react-lite';
-import PhonesStore from '../../store/phonesStore'; 
+import CharacteristicsTitles from '../../components/rendering/CharacteristicsTitles';
+import Pictures from '../../components/rendering/Pictures';
+import Data from '../../components/rendering/Data';
+import PhonesStore from '../../store/phonesStore';
 
 const Comparison = observer(() => {
 
-	const {phones} = PhonesStore;
-
-	const renderPictures = phones.map((phone) => {
-
-		return <div className="phones_names" key={phone.id} >
-			<img src={require(`../../images/${phone.imageName}.png`)} alt={phone.imageName} className="phone_img_large"></img>
-			<img src={image_tick} alt="" className="chevron_small"></img>
-			<div className="cell">{phone.name}</div>
-		</div>
-	});
-
-	const renderData = phones.map((phone) => {
-		return <div className="phones_data" key={phone.id} >
-			<div className="cell">{phone.manufacturer}</div>
-			<div className="cell">{phone.year}</div>
-			<div className="cell">{phone.diagonal}</div>
-			<div className="cell">{phone.country}</div>
-			<div className="cell">{phone.memory}</div>
-			<div className="cell">{phone.frequency}</div>
-			<div className="cell">
-				<img src={phone.nfc ? image_yes : image_no} alt=""></img>
-			</div>
-			<div className="cell">
-				<img src={phone.eSIM ? image_yes : image_no} alt=""></img>
-			</div>
-			<div className="cell">
-				<img src={phone.charging ? image_yes : image_no} alt=""></img>
-			</div>
-			<div className="cell">{phone.price}</div>
-		</div>
-	});
+	const { phones } = PhonesStore;
 
 	return (
 		<div className="wrapper">
-			<div className="phones_main">
+			<section className="phones_head">
 				<div className="phones_smartphones">
 					<div className="phones_title">
 						Смартфоны
@@ -58,24 +27,13 @@ const Comparison = observer(() => {
 						<input type="checkbox" name="checkbox_differences" />
 						<label htmlFor="checkbox_differences"> Показать различия</label>
 					</div>
-					{renderPictures}
+					<Pictures phones={phones} />
 				</div>
-			</div>
-			<div className="phones_characteristics">
-				<div className="phones_characteristics_titles">
-					<div className="characteristic_title">Производитель</div>
-					<div className="characteristic_title">год релиза</div>
-					<div className="characteristic_title">Диагональ экрана (дюйм)</div>
-					<div className="characteristic_title">Страна-производитель</div>
-					<div className="characteristic_title">Объем памяти</div>
-					<div className="characteristic_title">Частота обновления экрана</div>
-					<div className="characteristic_title">NFC</div>
-					<div className="characteristic_title">Поддержка eSIM</div>
-					<div className="characteristic_title">Поддержка беспроводной зарядки</div>
-					<div className="characteristic_title">Стоимость</div>
-				</div>
-				{renderData}
-			</div>
+			</section>
+			<section className="phones_characteristics">
+				<CharacteristicsTitles />
+				<Data phones={phones} />
+			</section>
 		</div>
 	);
 })

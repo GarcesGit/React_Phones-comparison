@@ -5,7 +5,7 @@
     width: 1440px;
 }
 
-.phones_main {
+.phones_head {
     height: 370px;
     padding-left: 165px;
     padding-right: 165px;
@@ -152,7 +152,7 @@
         font-size: 12px;
     }
 
-    .phones_main,
+    .phones_head,
     .phones_characteristics {
         padding-left: 100px;
         padding-right: 100px;
@@ -191,7 +191,7 @@
         font-size: 10px;
     }
 
-    .phones_main,
+    .phones_head,
     .phones_characteristics {
         padding-left: 70px;
         padding-right: 70px;
@@ -219,7 +219,7 @@
         font-size: 10px;
     }
 
-    .phones_main,
+    .phones_head,
     .phones_characteristics {
         padding-left: 50px;
         padding-right: 50px;
@@ -244,10 +244,3 @@
     }
 }
 
-
-.todo {
-    width: 200px;
-    height: 30px;
-    margin: 0 auto;
-    border: 1px solid #b9088a;
-}

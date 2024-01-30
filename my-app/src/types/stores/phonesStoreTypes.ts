@@ -2,6 +2,10 @@ export type PhoneType = {
     id: number;
     name: string;
     imageName: string;
+    chars: PhoneChars;
+}
+
+type PhoneChars = {
     manufacturer: string;
     year: string;
     diagonal: string;
@@ -11,5 +15,5 @@ export type PhoneType = {
     nfc: boolean;
     eSIM: boolean;
     charging: boolean;
-    price: string
+    price: string;
 }

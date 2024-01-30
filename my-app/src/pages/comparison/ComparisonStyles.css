@@ -43,7 +43,10 @@
 .phones_models {
     display: flex;
     justify-content: flex-start;
+    align-items: baseline;
+
 }
+
 
 .phones_differences {
     width: 200px;
@@ -55,11 +58,21 @@
     line-height: 60px;
 }
 
+.button_tick {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border-color: transparent;
+}
 
 .phones_names {
     text-align: start;
-
 }
+
+.phone_name_small {
+    font-size: 16px;
+}
+
 
 .phone_img_large {
     width: 60px;
@@ -71,7 +84,14 @@
     height: 27px;
 }
 
-.phone_img_small {}
+.image_arrows{
+    width: 20px;
+    height: 20px;
+}
+.phone_img_small {
+    width: 25px;
+    height: 50px;
+}
 
 .phones_characteristics {
     display: flex;

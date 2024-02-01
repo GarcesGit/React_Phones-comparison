@@ -130,8 +130,18 @@ class PhonesStore {
     constructor() {
         makeAutoObservable(this)
 
-        this.showedPhones = this.phones.slice(0, this.showedPhonesNumber);
+        this.setShowedPhonesByNumber(this.showedPhonesNumber);
     }
+
+    setShowedPhonesNumber = (value: number) => {
+        this.showedPhonesNumber = value;
+        this.setShowedPhonesByNumber(value);
+    }
+
+    setShowedPhonesByNumber = (value: number) => {
+        this.showedPhones = this.phones.slice(0, value);
+    }
+
 }
 
 export default new PhonesStore

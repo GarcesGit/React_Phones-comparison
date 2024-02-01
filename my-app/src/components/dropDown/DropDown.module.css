@@ -1,9 +1,9 @@
 .myDropDown {
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 200px;
     bottom: 0;
-    right: 0;
-    left: 0;
+    left: 0px;
+    z-index: 1;
     display: none;
 }
 

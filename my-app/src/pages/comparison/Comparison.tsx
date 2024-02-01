@@ -1,10 +1,10 @@
-import React from 'react';
 import './ComparisonStyles.css';
 import { observer } from 'mobx-react-lite';
 import CharacteristicsTitles from '../../components/rendering/CharacteristicsTitles';
 import Pictures from '../../components/pictures/Pictures';
 // import Data from '../../components/rendering/Data';
 import PhonesStore from '../../store/phonesStore';
+import Counter from '../../components/rendering/Counter';
 
 const Comparison = observer(() => {
 
@@ -17,16 +17,7 @@ const Comparison = observer(() => {
 					<div className="phones_title">
 						Смартфоны
 					</div>
-					<div className="phones_pagination">
-						{/* Отобразить товары: {кнопки }
-
-2 3 4 5 6кнопки, здесь массив или в отдел компоненет Counter = observer(() => { 
-в нем массив с числами , return <> мапим и рендерим в кнопки</>
-обратиться к стору за setPhonesStoreNumber 
-в PhonesStore handler для onClick на кнопки , стор value передается значение массива */}
-
-
-					</div>
+					<Counter />
 				</div>
 				<div className="phones_models">
 					<div className="phones_differences">

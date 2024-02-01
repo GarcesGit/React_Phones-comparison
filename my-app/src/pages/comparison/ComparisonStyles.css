@@ -20,7 +20,7 @@
 }
 
 .phones_title,
-.phones_pagination {
+.display_products {
     width: 550px;
 }
 
@@ -32,41 +32,43 @@
     line-height: 60px;
 }
 
-.phones_pagination {
+.display_products {
     text-align: end;
     color: #0D5ADC;
     font-weight: 400;
     line-height: 60px;
 }
 
-
 .phones_models {
     display: flex;
-    justify-content: flex-start;
-    align-items: baseline;
-
+    justify-content: space-between;
+    align-items: last baseline;
+    padding-top: 20px;
 }
-
 
 .phones_differences {
     width: 200px;
     margin-right: 50px;
-    padding-top: 140px;
     text-align: start;
     color: #0D5ADC;
     font-weight: 400;
     line-height: 60px;
 }
 
-.button_tick {
-    width: 30px;
-    height: 30px;
-    background-color: transparent;
-    border-color: transparent;
+
+.phones_pictures {
 }
 
-.phones_names {
-    text-align: start;
+.phone_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.phone_name {
+    text-align: center;
+    padding: 5px;
 }
 
 .phone_name_small {
@@ -79,9 +81,16 @@
     height: 120px;
 }
 
-.chevron_small {
+.button_tick {
     width: 30px;
-    height: 27px;
+    height: 30px;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.chevron_small {
+    margin-top: 20px;
+    margin-left: 15px;
 }
 
 .image_arrows{
@@ -127,12 +136,19 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 100px;
-    height: 100px;
+    /* width: 100px;
+    height: 100px; */
     border-top: 1px solid #CDCFD2;
 }
 
-
+.num {
+    font-size: 18px;
+    color: #0D5ADC;
+    font-weight: 400;
+    background-color: transparent;
+    border-color: transparent;
+    padding-left: 2px;
+}
 
 
 
@@ -143,7 +159,7 @@
         font-size: 16px;
     }
 
-    .phones_pagination {
+    .display_products {
         width: 350px;
     }
 }
@@ -155,7 +171,7 @@
     }
 
     .phones_title,
-    .phones_pagination {
+    .display_products {
         width: 400px;
     }
 
@@ -179,7 +195,7 @@
     }
 
     .phones_title,
-    .phones_pagination {
+    .display_products {
         width: 350px;
     }
 
@@ -196,7 +212,7 @@
     }
 
     .phones_title,
-    .phones_pagination {
+    .display_products {
         width: 250px;
     }
 
@@ -218,7 +234,7 @@
     }
 
     .phones_title,
-    .phones_pagination {
+    .display_products {
         width: 200px;
     }
 
@@ -253,7 +269,7 @@
     }
 
     .phones_title,
-    .phones_pagination {
+    .display_products {
         width: 150px;
     }
 

@@ -11,14 +11,10 @@ body {
     justify-content: center;
 }
 
-
 main {
     display: flex;
     justify-content: center;
     text-align: center;
     height: 1590px;
     background: #fff;
-
 }
-
-

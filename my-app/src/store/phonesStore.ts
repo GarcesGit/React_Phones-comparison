@@ -17,7 +17,7 @@ class PhonesStore {
                 nfc: false,
                 eSIM: true,
                 charging: true,
-                price: "81 990 ₽"
+                price: "81 990 ₽",
             },
         },
         {
@@ -34,8 +34,8 @@ class PhonesStore {
                 nfc: true,
                 eSIM: true,
                 charging: false,
-                price: "27 490 ₽"
-            }
+                price: "27 490 ₽",
+            },
         },
         {
             id: 3,
@@ -51,8 +51,8 @@ class PhonesStore {
                 nfc: true,
                 eSIM: true,
                 charging: true,
-                price: "32 890 ₽"
-            }
+                price: "32 890 ₽",
+            },
         },
         {
             id: 4,
@@ -68,8 +68,8 @@ class PhonesStore {
                 nfc: true,
                 eSIM: true,
                 charging: true,
-                price: "40 900 ₽"
-            }
+                price: "40 900 ₽",
+            },
         },
         {
             id: 5,
@@ -85,8 +85,8 @@ class PhonesStore {
                 nfc: true,
                 eSIM: true,
                 charging: true,
-                price: "24 500 ₽"
-            }
+                price: "24 500 ₽",
+            },
         },
         {
             id: 6,
@@ -102,8 +102,8 @@ class PhonesStore {
                 nfc: true,
                 eSIM: true,
                 charging: false,
-                price: "26 990 ₽"
-            }
+                price: "26 990 ₽",
+            },
         },
         {
             id: 7,
@@ -119,29 +119,40 @@ class PhonesStore {
                 nfc: true,
                 eSIM: true,
                 charging: true,
-                price: "58 990 ₽"
-            }
-        }
-    ]
+                price: "58 990 ₽",
+            },
+        },
+    ];
 
     showedPhonesNumber: number = 3;
     showedPhones: PhoneType[] = [];
+    phonesForChanging: PhoneType[] = [];
 
     constructor() {
-        makeAutoObservable(this)
+        makeAutoObservable(this);
 
-        this.setShowedPhonesByNumber(this.showedPhonesNumber);
+        this.changeShowedPhones(this.showedPhonesNumber);
     }
+
+    changeShowedPhones = (value: number) => {
+        this.setShowedPhonesNumber(value);
+        this.setShowedPhonesByNumber(value);
+        this.setPhonesForChanging();
+    };
 
     setShowedPhonesNumber = (value: number) => {
         this.showedPhonesNumber = value;
-        this.setShowedPhonesByNumber(value);
-    }
+    };
 
     setShowedPhonesByNumber = (value: number) => {
         this.showedPhones = this.phones.slice(0, value);
-    }
+    };
 
+    setPhonesForChanging = () => {
+        this.phonesForChanging = this.phones.filter(
+            (phone) => !this.showedPhones.includes(phone)
+        );
+    };
 }
 
-export default new PhonesStore
+export default new PhonesStore();

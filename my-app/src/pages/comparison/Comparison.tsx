@@ -8,7 +8,7 @@ import Counter from '../../components/rendering/Counter';
 
 const Comparison = observer(() => {
 
-	const { showedPhones } = PhonesStore;
+	const { showedPhones } = PhonesStore; 
 
 	return (
 		<div className="wrapper">

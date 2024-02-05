@@ -1,29 +1,97 @@
 .myDropDown {
     position: absolute;
-    top: 200px;
-    bottom: 0;
-    left: 0px;
+    width: 400px;
+    height: 330px;
+    border: 1px solid #CDCFD2;
+    border-radius: 5px;
+    background: white;
+    top: 70px;
+    bottom: 0px;
+    left: -150px;
+    right: 0px;
     z-index: 1;
     display: none;
-}
-
-.myDropDownContent {
-    padding: 15px;
-    width: 300px;
-    height: 300px;
-    border: 1px solid black;
-    background: white;
-}
-
-.myDropDownItems {
-    display: flex;
-    justify-content: start;
-    gap: 10px;
-    align-items: center;
-    padding-top: 20px;
+    padding: 10px;
+    box-shadow: 0px 5px 20px #CDCFD2;
 }
 .myDropDown.active {
     display: flex;
-    justify-content: center;
+    justify-content: start;
+    align-items: baseline;
+}
+
+.myDropDownContentAndInput{
+    padding-top: 10px;
+    display: block;
+
+}
+.myDropDownContent {
+    width: 380px;
+    height: 250px;
+    padding: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.myDropDownContent::-webkit-scrollbar {
+    width: 5px;
+}
+.myDropDownContent::-webkit-scrollbar-thumb {
+    background-color: #CDCFD2;
+    border-radius: 10px;
+}
+.myDropDownItems {
+    display: flex;
+    justify-content: start;
+    gap: 20px;
     align-items: center;
+    padding-top: 20px;
+}
+.myDropDownInput {
+    width: 330px;
+    height: 45px;
+    border: 1px solid #CDCFD2;
+    border-radius: 5px;
+    font-size: 18px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    font-weight: 100;
+
+}
+.myDropDownInput:focus {
+    outline: none;
+}
+.myDropDownInput::placeholder {
+    color: #CDCFD2;
+    font-size: 22px;
+}
+.myDropDownButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+@media (max-width: 900px) {
+    .myDropDown {
+        width: 280px;
+        height: 230px;
+    }
+
+    .myDropDownContent {
+        width: 260px;
+        height: 165px;
+    }    
+    .myDropDownItems {
+        padding-top: 10px;
+    }
+   
+    .myDropDownInput {
+        width: 230px;
+        height: 30px;
+        font-size: 14px;
+    }
+    .myDropDownInput::placeholder {
+        font-size: 14px;
+    }
+    
 }

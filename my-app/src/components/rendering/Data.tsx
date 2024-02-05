@@ -12,7 +12,6 @@ const Data = ({ phones }: DataProps) => {
 	
 	return (<>
 		{ phones.map((phone) => {
-
 				// return (
 				// 	<div className="phones_data" key={phone.id}>
 				// 		<div className="cell">{phone.manufacturer}</div>

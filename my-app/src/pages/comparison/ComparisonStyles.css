@@ -86,9 +86,6 @@
     height: 30px;
     background-color: transparent;
     border-color: transparent;
-}
-
-.chevron_small {
     margin-top: 20px;
     margin-left: 15px;
 }
@@ -148,9 +145,13 @@
     background-color: transparent;
     border-color: transparent;
     padding-left: 2px;
+    cursor: pointer;
 }
 
-
+.current {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
 
 
 @media (max-width: 1250px) {
@@ -219,6 +220,23 @@
     .phones_title {
         font-size: 38px;
     }
+    .phone_img_large {
+        width: 42px;
+        height: 84px;
+    }
+    .button_tick {
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+    
+    .chevron_small {
+        width: 20px;
+        height: 20px;
+    }
+    .num {
+        font-size: 14px;
+    }
+
 }
 
 @media (max-width: 580px) {
@@ -246,6 +264,10 @@
         min-width: 120px;
         font-size: 10px;
         margin-right: 10px;
+    }
+
+    .num {
+        font-size: 12px;
     }
 }
 

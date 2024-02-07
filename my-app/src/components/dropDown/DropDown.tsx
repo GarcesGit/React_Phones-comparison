@@ -7,9 +7,6 @@ import PhonesStore from "../../store/phonesStore";
 import { useDebounce } from "../../hooks/useDebounce";
 import { PhoneType } from "../../types/stores/phonesStoreTypes";
 
-//input испр на поиск по строчным буквам
-//
-
 interface DropDownProps {
     visible: boolean;
     setVisible: Dispatch<SetStateAction<boolean>>;
@@ -18,9 +15,7 @@ interface DropDownProps {
 function DropDown({ visible, setVisible }: DropDownProps) {
     const { phonesForChanging } = PhonesStore;
     const [searchInputValue, setSearchInputValue] = useState("");
-    const [filteredPhonesForChanging, setFilteredPhonesForChanging] =
-        useState<PhoneType[]>(phonesForChanging);
-
+    const [filteredPhonesForChanging, setFilteredPhonesForChanging] = useState<PhoneType[]>(phonesForChanging);
     const debouncedSearchInputValue = useDebounce(searchInputValue);
 
     const dropDownRef = useRef(null);
@@ -33,7 +28,7 @@ function DropDown({ visible, setVisible }: DropDownProps) {
         }
 
         const filteredPhones = phonesForChanging.filter((phone) =>
-            phone.name.includes(debouncedSearchInputValue)
+            phone.name.toLowerCase().includes(debouncedSearchInputValue)
         );
         setFilteredPhonesForChanging(filteredPhones);
     }, [debouncedSearchInputValue, phonesForChanging]);
@@ -42,10 +37,9 @@ function DropDown({ visible, setVisible }: DropDownProps) {
     if (visible) {
         rootClasses.push(cl.active);
     }
-    const onChangeSearchInputValue = (
-        event: React.ChangeEvent<HTMLInputElement>
-    ) => {
-        setSearchInputValue(event.target.value); //управляемый инпут state+эта фун
+
+    const onChangeSearchInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchInputValue(event.target.value.toLowerCase());
     };
 
     return (
@@ -60,25 +54,19 @@ function DropDown({ visible, setVisible }: DropDownProps) {
                         type="text"
                         placeholder="Поиск"
                         onChange={onChangeSearchInputValue}
-                        // onBlur={() => {handler}} = input value = ''
+                        onBlur={() => setSearchInputValue("")}
                     />
                     <div className={cl.myDropDownContent}>
-                        {/* вынести в отдельную комп*/}
+                        {/* /////////////////// вынести в отдельную комп*/}
                         {filteredPhonesForChanging.map((phone) => {
                             return (
-                                <div
-                                    className={cl.myDropDownItems}
-                                    key={phone.id}
-                                >
+                                <div className={cl.myDropDownItems} key={phone.id}>
                                     <button
                                         className={cl.myDropDownButton}
+                                        // {/* /////////////////// */}
                                         onClick={() => {}}
                                     >
-                                        <img
-                                            src={image_arrows}
-                                            alt=""
-                                            className="image_arrows"
-                                        ></img>
+                                        <img src={image_arrows} alt="" className="image_arrows"></img>
                                     </button>
                                     <img
                                         src={require(`../../images/${phone.imageName}.png`)}

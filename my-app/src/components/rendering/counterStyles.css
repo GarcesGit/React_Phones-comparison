@@ -1,0 +1,23 @@
+.display_products {
+    width: 550px;
+
+    text-align: end;
+    color: #0d5adc;
+    font-weight: 400;
+    line-height: 60px;
+}
+
+.nums {
+    font-size: 18px;
+    color: #0d5adc;
+    font-weight: 400;
+    background-color: transparent;
+    border-color: transparent;
+    padding-left: 2px;
+    cursor: pointer;
+}
+
+.current_num {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}

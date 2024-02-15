@@ -6,6 +6,7 @@ import { observer } from "mobx-react-lite";
 import PhonesStore from "../../store/phonesStore";
 import { useDebounce } from "../../hooks/useDebounce";
 import { PhoneType } from "../../types/stores/phonesStoreTypes";
+import { toJS } from "mobx";
 
 interface DropDownProps {
     visible: boolean;
@@ -13,7 +14,7 @@ interface DropDownProps {
 }
 
 function DropDown({ visible, setVisible }: DropDownProps) {
-    const { phonesForChanging } = PhonesStore;
+    const { showedPhones, phonesForChanging } = PhonesStore;
     const [searchInputValue, setSearchInputValue] = useState("");
     const [filteredPhonesForChanging, setFilteredPhonesForChanging] = useState<PhoneType[]>(phonesForChanging);
     const debouncedSearchInputValue = useDebounce(searchInputValue);
@@ -28,7 +29,7 @@ function DropDown({ visible, setVisible }: DropDownProps) {
         }
 
         const filteredPhones = phonesForChanging.filter((phone) =>
-            phone.name.toLowerCase().includes(debouncedSearchInputValue)
+            phone.name.toLowerCase().includes(debouncedSearchInputValue.toLowerCase())
         );
         setFilteredPhonesForChanging(filteredPhones);
     }, [debouncedSearchInputValue, phonesForChanging]);
@@ -39,11 +40,17 @@ function DropDown({ visible, setVisible }: DropDownProps) {
     }
 
     const onChangeSearchInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchInputValue(event.target.value.toLowerCase());
+        setSearchInputValue(event.target.value);
     };
 
+    // const replacePhones = () => {
+
+    //         let replaced = showedPhones.map(item => item );
+    //         console.log(toJS(replaced));
+    // };
+
     return (
-        <div className="phones_data" ref={dropDownRef}>
+        <div className="" ref={dropDownRef}>
             <div className={rootClasses.join(" ")}>
                 <div className={cl.myDropDownContentAndInput}>
                     <input
@@ -64,14 +71,14 @@ function DropDown({ visible, setVisible }: DropDownProps) {
                                     <button
                                         className={cl.myDropDownButton}
                                         // {/* /////////////////// */}
-                                        onClick={() => {}}
+                                        // onClick={replacePhones}
                                     >
-                                        <img src={image_arrows} alt="" className="image_arrows"></img>
+                                        <img src={image_arrows} alt="" className={cl.image_arrows}></img>
                                     </button>
                                     <img
                                         src={require(`../../images/${phone.imageName}.png`)}
                                         alt={phone.imageName}
-                                        className="phone_img_small"
+                                        className={cl.phone_img_small}
                                     ></img>
                                     <div>{phone.name}</div>
                                 </div>

@@ -1,5 +1,6 @@
 import PhonesStore from "../../store/phonesStore";
 import { observer } from "mobx-react-lite";
+import "./counterStyles.css";
 
 const Counter = () => {
     const { showedPhonesNumber, changeShowedPhones } = PhonesStore;
@@ -10,9 +11,7 @@ const Counter = () => {
             Отобразить товары:
             {itemsNumber.map((num, index) => (
                 <button
-                    className={`num ${
-                        showedPhonesNumber === num ? "current" : ""
-                    }`}
+                    className={`nums ${showedPhonesNumber === num ? "current_num" : ""}`}
                     key={index}
                     onClick={() => {
                         changeShowedPhones(num);

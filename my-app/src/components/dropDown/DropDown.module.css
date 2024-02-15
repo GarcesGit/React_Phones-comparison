@@ -2,7 +2,7 @@
     position: absolute;
     width: 400px;
     height: 330px;
-    border: 1px solid #CDCFD2;
+    border: 1px solid #cdcfd2;
     border-radius: 5px;
     background: white;
     top: 70px;
@@ -12,7 +12,7 @@
     z-index: 1;
     display: none;
     padding: 10px;
-    box-shadow: 0px 5px 20px #CDCFD2;
+    box-shadow: 0px 5px 20px #cdcfd2;
 }
 .myDropDown.active {
     display: flex;
@@ -20,10 +20,9 @@
     align-items: baseline;
 }
 
-.myDropDownContentAndInput{
+.myDropDownContentAndInput {
     padding-top: 10px;
     display: block;
-
 }
 .myDropDownContent {
     width: 380px;
@@ -36,7 +35,7 @@
     width: 5px;
 }
 .myDropDownContent::-webkit-scrollbar-thumb {
-    background-color: #CDCFD2;
+    background-color: #cdcfd2;
     border-radius: 10px;
 }
 .myDropDownItems {
@@ -49,19 +48,18 @@
 .myDropDownInput {
     width: 330px;
     height: 45px;
-    border: 1px solid #CDCFD2;
+    border: 1px solid #cdcfd2;
     border-radius: 5px;
     font-size: 18px;
     padding-left: 10px;
     margin-bottom: 5px;
     font-weight: 100;
-
 }
 .myDropDownInput:focus {
     outline: none;
 }
 .myDropDownInput::placeholder {
-    color: #CDCFD2;
+    color: #cdcfd2;
     font-size: 22px;
 }
 .myDropDownButton {
@@ -70,6 +68,14 @@
     cursor: pointer;
 }
 
+.image_arrows {
+    width: 20px;
+    height: 20px;
+}
+.phone_img_small {
+    width: 25px;
+    height: 50px;
+}
 
 @media (max-width: 900px) {
     .myDropDown {
@@ -80,11 +86,11 @@
     .myDropDownContent {
         width: 260px;
         height: 165px;
-    }    
+    }
     .myDropDownItems {
         padding-top: 10px;
     }
-   
+
     .myDropDownInput {
         width: 230px;
         height: 30px;
@@ -93,5 +99,4 @@
     .myDropDownInput::placeholder {
         font-size: 14px;
     }
-    
 }

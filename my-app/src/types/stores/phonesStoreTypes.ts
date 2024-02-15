@@ -3,7 +3,7 @@ export type PhoneType = {
     name: string;
     imageName: string;
     chars: PhoneChars;
-}
+};
 
 type PhoneChars = {
     manufacturer: string;
@@ -16,4 +16,22 @@ type PhoneChars = {
     eSIM: boolean;
     charging: boolean;
     price: string;
-}
+};
+
+export type TableRowName =
+    | "manufacturer"
+    | "year"
+    | "diagonal"
+    | "country"
+    | "memory"
+    | "frequency"
+    | "nfc"
+    | "eSIM"
+    | "charging"
+    | "price";
+
+export type TableDataRow = {
+    rowName: TableRowName;
+    rowTitle: string;
+    rowChars: (string | boolean)[];
+};

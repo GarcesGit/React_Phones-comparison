@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { PhoneType } from "../types/stores/phonesStoreTypes";
+import { PhoneType, TableDataRow, TableRowName } from "../types/stores/phonesStoreTypes";
 
 class PhonesStore {
     phones: PhoneType[] = [
@@ -123,10 +123,62 @@ class PhonesStore {
             },
         },
     ];
-
     showedPhonesNumber: number = 3;
     showedPhones: PhoneType[] = [];
     phonesForChanging: PhoneType[] = [];
+    phoneTableRows: TableDataRow[] = [
+        {
+            rowName: "manufacturer",
+            rowTitle: "Производитель",
+            rowChars: [],
+        },
+        {
+            rowName: "year",
+            rowTitle: "год релиза",
+            rowChars: [],
+        },
+        {
+            rowName: "diagonal",
+            rowTitle: "Диагональ экрана (дюйм)",
+            rowChars: [],
+        },
+        {
+            rowName: "country",
+            rowTitle: "Страна-производитель",
+            rowChars: [],
+        },
+        {
+            rowName: "memory",
+            rowTitle: "Объем памяти",
+            rowChars: [],
+        },
+        {
+            rowName: "frequency",
+            rowTitle: "Частота обновления экрана",
+            rowChars: [],
+        },
+        {
+            rowName: "nfc",
+            rowTitle: "NFC",
+            rowChars: [],
+        },
+        {
+            rowName: "eSIM",
+            rowTitle: "Поддержка eSIM",
+            rowChars: [],
+        },
+        {
+            rowName: "charging",
+            rowTitle: "Поддержка беспроводной зарядки",
+            rowChars: [],
+        },
+        {
+            rowName: "price",
+            rowTitle: "Стоимость",
+            rowChars: [],
+        },
+    ];
+    isShownOnlyDifferences: boolean = false;
 
     constructor() {
         makeAutoObservable(this);
@@ -138,6 +190,7 @@ class PhonesStore {
         this.setShowedPhonesNumber(value);
         this.setShowedPhonesByNumber(value);
         this.setPhonesForChanging();
+        this.setPhoneTableRows();
     };
 
     setShowedPhonesNumber = (value: number) => {
@@ -149,10 +202,43 @@ class PhonesStore {
     };
 
     setPhonesForChanging = () => {
-        this.phonesForChanging = this.phones.filter(
-            (phone) => !this.showedPhones.includes(phone)
-        );
+        this.phonesForChanging = this.phones.filter((phone) => !this.showedPhones.includes(phone));
+    };
+
+    setPhoneTableRows = () => {
+        const newTableRows: Record<TableRowName, (string | boolean)[]> = {
+            // лучше динамически
+            manufacturer: [],
+            year: [],
+            diagonal: [],
+            country: [],
+            memory: [],
+            frequency: [],
+            nfc: [],
+            eSIM: [],
+            charging: [],
+            price: [],
+        };
+
+        this.showedPhones.forEach((phone) => {
+            const phoneCharsArray = Object.entries(phone.chars);
+            phoneCharsArray.forEach((char) => {
+                const charName: TableRowName = char[0] as TableRowName;
+                newTableRows[charName].push(char[1]);
+            });
+        });
+        this.phoneTableRows = this.phoneTableRows.map((row) => {
+            const newRow = { ...row, rowChars: newTableRows[row.rowName] };
+            return newRow;
+        });
+    };
+
+    setIsShownOnlyDifferences = () => {
+        this.isShownOnlyDifferences = !this.isShownOnlyDifferences;
     };
 }
+
+//ф замены в сторе/ хендлер принимает ID тел при замене и ID тед с dropd  и вызвать a персчитывающую все масиивы /при выборе тел закрывается dropdown/ в массиве phones поменять местами
+// верстку поправитть - не гибкая - см notion 22.12
 
 export default new PhonesStore();

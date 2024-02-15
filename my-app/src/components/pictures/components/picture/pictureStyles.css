@@ -1,0 +1,32 @@
+.phones_pictures {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.phone_name {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.phone_img_large {
+    width: 60px;
+    height: 120px;
+}
+
+.button_tick {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border-color: transparent;
+    margin-top: 20px;
+    margin-left: 15px;
+}

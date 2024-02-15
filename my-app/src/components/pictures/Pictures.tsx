@@ -1,17 +1,18 @@
-import React from 'react';
-import { PhoneType } from '../../types/stores/phonesStoreTypes';
-import Picture from './components/picture/Picture';
+import { PhoneType } from "../../types/stores/phonesStoreTypes";
+import Picture from "./components/picture/Picture";
 
 interface PicturesProps {
-	phones: PhoneType[];
+    phones: PhoneType[];
 }
 
 const Pictures = ({ phones }: PicturesProps) => {
+    return (
+        <>
+            {phones.map((phone) => (
+                <Picture phone={phone} key={phone.id} />
+            ))}
+        </>
+    );
+};
 
-	return (<>
-		{phones.map((phone) => <Picture phone={phone} key={phone.id}/>)}
-	</>
-	)
-}
-
-export default Pictures
+export default Pictures;

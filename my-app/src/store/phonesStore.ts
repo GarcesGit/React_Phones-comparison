@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { PhoneType, TableDataRow, TableRowName } from "../types/stores/phonesStoreTypes";
+import { toJS } from "mobx";
 
 class PhonesStore {
     phones: PhoneType[] = [
@@ -200,7 +201,6 @@ class PhonesStore {
     setShowedPhonesByNumber = (value: number) => {
         this.showedPhones = this.phones.slice(0, value);
     };
-
     setPhonesForChanging = () => {
         this.phonesForChanging = this.phones.filter((phone) => !this.showedPhones.includes(phone));
     };
@@ -236,9 +236,16 @@ class PhonesStore {
     setIsShownOnlyDifferences = () => {
         this.isShownOnlyDifferences = !this.isShownOnlyDifferences;
     };
+
+    replacePhones = (replacingID: number, replacedID: number) => {
+        const replacingPhoneIndex = this.phones.findIndex((phone) => phone.id === replacingID);
+        const replacedPhoneIndex = this.phones.findIndex((phone) => phone.id === replacedID);
+        const replacingPhone = this.phones[replacingPhoneIndex];
+        const replacedPhone = this.phones[replacedPhoneIndex];
+        this.phones[replacingPhoneIndex] = replacedPhone;
+        this.phones[replacedPhoneIndex] = replacingPhone;
+
+        this.changeShowedPhones(this.showedPhonesNumber);
+    };
 }
-
-//ф замены в сторе/ хендлер принимает ID тел при замене и ID тед с dropd  и вызвать a персчитывающую все масиивы /при выборе тел закрывается dropdown/ в массиве phones поменять местами
-// верстку поправитть - не гибкая - см notion 22.12
-
 export default new PhonesStore();

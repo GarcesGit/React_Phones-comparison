@@ -26,7 +26,7 @@ const Picture = ({ phone }: PictureProps) => {
                 <button className="button_tick" onClick={() => setDropDown(true)}>
                     <img src={image_tick} alt="" className="chevron_small"></img>
                 </button>
-                <DropDown visible={dropDown} setVisible={setDropDown} />
+                <DropDown visible={dropDown} setVisible={setDropDown} phoneID={phone.id} />
             </div>
             <div className="phone_name">{phone.name}</div>
         </div>

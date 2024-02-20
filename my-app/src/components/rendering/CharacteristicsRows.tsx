@@ -4,6 +4,7 @@ import image_no from "../../images/no.png";
 import { TableDataRow } from "../../types/stores/phonesStoreTypes";
 import { calculateColumnWidth } from "../utils/calculateColumnWidth";
 import PhonesStore from "../../store/phonesStore";
+import uuid from "react-uuid";
 
 interface CharacteristicsRowsProps {
     row: TableDataRow;
@@ -19,12 +20,16 @@ const CharacteristicsRows = ({ row: { rowTitle, rowChars } }: CharacteristicsRow
                 {rowChars.map((char) => {
                     if (typeof char === "boolean") {
                         return (
-                            <div style={{ width: calculateColumnWidth(showedPhonesNumber) }}>
+                            <div key={uuid()} style={{ width: calculateColumnWidth(showedPhonesNumber) }}>
                                 <img src={char ? image_yes : image_no} alt="" className="row row_image" />
                             </div>
                         );
                     }
-                    return <div style={{ width: calculateColumnWidth(showedPhonesNumber) }}>{char}</div>;
+                    return (
+                        <div key={uuid()} style={{ width: calculateColumnWidth(showedPhonesNumber) }}>
+                            {char}
+                        </div>
+                    );
                 })}
             </div>
         </div>

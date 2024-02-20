@@ -3,18 +3,18 @@ import cl from "./DropDown.module.css";
 import image_arrows from "../../images/arrows.png";
 import { useOutsideClick } from "../../hooks/useOutsideClick";
 import { observer } from "mobx-react-lite";
-import PhonesStore from "../../store/phonesStore";
 import { useDebounce } from "../../hooks/useDebounce";
 import { PhoneType } from "../../types/stores/phonesStoreTypes";
-import { toJS } from "mobx";
+import PhonesStore from "../../store/phonesStore";
 
 interface DropDownProps {
     visible: boolean;
     setVisible: Dispatch<SetStateAction<boolean>>;
+    phoneID: number;
 }
 
-function DropDown({ visible, setVisible }: DropDownProps) {
-    const { showedPhones, phonesForChanging } = PhonesStore;
+function DropDown({ visible, setVisible, phoneID }: DropDownProps) {
+    const { phonesForChanging, replacePhones } = PhonesStore;
     const [searchInputValue, setSearchInputValue] = useState("");
     const [filteredPhonesForChanging, setFilteredPhonesForChanging] = useState<PhoneType[]>(phonesForChanging);
     const debouncedSearchInputValue = useDebounce(searchInputValue);
@@ -43,11 +43,10 @@ function DropDown({ visible, setVisible }: DropDownProps) {
         setSearchInputValue(event.target.value);
     };
 
-    // const replacePhones = () => {
-
-    //         let replaced = showedPhones.map(item => item );
-    //         console.log(toJS(replaced));
-    // };
+    const handleReplacePhone = (replacingID: number, replacedID: number) => {
+        replacePhones(replacingID, replacedID);
+        setVisible(false);
+    };
 
     return (
         <div className="" ref={dropDownRef}>
@@ -56,22 +55,19 @@ function DropDown({ visible, setVisible }: DropDownProps) {
                     <input
                         value={searchInputValue}
                         className={cl.myDropDownInput}
-                        // {/* /////////////////// */}
-                        // key={phone.id}
                         type="text"
                         placeholder="Поиск"
                         onChange={onChangeSearchInputValue}
                         onBlur={() => setSearchInputValue("")}
                     />
                     <div className={cl.myDropDownContent}>
-                        {/* /////////////////// вынести в отдельную комп*/}
+                        {/* /////////////////// вынести в отдельную комп/ подумать над нейминг пропсов phone, phoneID/ туда handler и setVisible*/}
                         {filteredPhonesForChanging.map((phone) => {
                             return (
                                 <div className={cl.myDropDownItems} key={phone.id}>
                                     <button
                                         className={cl.myDropDownButton}
-                                        // {/* /////////////////// */}
-                                        // onClick={replacePhones}
+                                        onClick={() => handleReplacePhone(phone.id, phoneID)}
                                     >
                                         <img src={image_arrows} alt="" className={cl.image_arrows}></img>
                                     </button>

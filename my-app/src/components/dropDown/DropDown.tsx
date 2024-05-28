@@ -15,8 +15,10 @@ interface DropDownProps {
 
 function DropDown({ visible, setVisible, phoneID }: DropDownProps) {
     const { phonesForChanging, replacePhones } = PhonesStore;
+
     const [searchInputValue, setSearchInputValue] = useState("");
-    const [filteredPhonesForChanging, setFilteredPhonesForChanging] = useState<PhoneType[]>(phonesForChanging);
+    const [filteredPhonesForChanging, setFilteredPhonesForChanging] =
+        useState<PhoneType[]>(phonesForChanging);
     const debouncedSearchInputValue = useDebounce(searchInputValue);
 
     const dropDownRef = useRef(null);
@@ -49,7 +51,7 @@ function DropDown({ visible, setVisible, phoneID }: DropDownProps) {
     };
 
     return (
-        <div className="" ref={dropDownRef}>
+        <div ref={dropDownRef}>
             <div className={rootClasses.join(" ")}>
                 <div className={cl.myDropDownContentAndInput}>
                     <input
@@ -61,15 +63,20 @@ function DropDown({ visible, setVisible, phoneID }: DropDownProps) {
                         onBlur={() => setSearchInputValue("")}
                     />
                     <div className={cl.myDropDownContent}>
-                        {/* /////////////////// вынести в отдельную комп/ подумать над нейминг пропсов phone, phoneID/ туда handler и setVisible*/}
                         {filteredPhonesForChanging.map((phone) => {
                             return (
                                 <div className={cl.myDropDownItems} key={phone.id}>
                                     <button
                                         className={cl.myDropDownButton}
-                                        onClick={() => handleReplacePhone(phone.id, phoneID)}
+                                        onClick={() =>
+                                            handleReplacePhone(phone.id, phoneID)
+                                        }
                                     >
-                                        <img src={image_arrows} alt="" className={cl.image_arrows}></img>
+                                        <img
+                                            src={image_arrows}
+                                            alt=""
+                                            className={cl.image_arrows}
+                                        ></img>
                                     </button>
                                     <img
                                         src={require(`../../images/${phone.imageName}.png`)}

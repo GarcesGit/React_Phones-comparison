@@ -11,11 +11,11 @@ const PhoneTableRows = () => {
         if (!isShownOnlyDifferences) {
             setFilteredRows(phoneTableRows);
 
-            return; //чтобы не срабатывала далее setFilteredRows(phoneTableRows)
-        } //чтобы не писать if else пишем if return
+            return;
+        }
 
         const newRows = phoneTableRows.filter((row) => {
-            const isEqual = row.rowChars.every((value) => value === row.rowChars[0]); // сравнили с первым значением
+            const isEqual = row.rowChars.every((value) => value === row.rowChars[0]);
             return !isEqual;
         });
         setFilteredRows(newRows);
